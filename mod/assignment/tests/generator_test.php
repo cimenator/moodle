@@ -71,7 +71,7 @@ class mod_assignment_generator_testcase extends advanced_testcase {
 
         // test eventslib integration
         $this->setAdminUser();
-        $generator->create_instance(array('course'=>$course->id, 'timedue'=>(time()+60*60+24)));
+        $generator->create_instance(array('course'=>$course->id, 'timedue'=>(time()+HOURSECS+24)));
         $this->setUser(null);
     }
 }

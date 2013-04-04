@@ -191,7 +191,7 @@ class mod_quiz_locallib_testcase extends basic_testcase {
         $attempt->timefinish = time() - 7200;
 
         $quiz = new stdClass();
-        $quiz->timeclose = time() + 3600;
+        $quiz->timeclose = time() + HOURSECS;
 
         $this->assertEquals(mod_quiz_display_options::LATER_WHILE_OPEN, quiz_attempt_state($quiz, $attempt));
     }
@@ -202,7 +202,7 @@ class mod_quiz_locallib_testcase extends basic_testcase {
         $attempt->timefinish = time() - 7200;
 
         $quiz = new stdClass();
-        $quiz->timeclose = time() - 3600;
+        $quiz->timeclose = time() - HOURSECS;
 
         $this->assertEquals(mod_quiz_display_options::AFTER_CLOSE, quiz_attempt_state($quiz, $attempt));
     }
@@ -224,7 +224,7 @@ class mod_quiz_locallib_testcase extends basic_testcase {
         $attempt->timefinish = time() - 7200;
 
         $quiz = new stdClass();
-        $quiz->timeclose = time() + 3600;
+        $quiz->timeclose = time() + HOURSECS;
 
         $this->assertEquals(mod_quiz_display_options::LATER_WHILE_OPEN, quiz_attempt_state($quiz, $attempt));
     }
@@ -235,7 +235,7 @@ class mod_quiz_locallib_testcase extends basic_testcase {
         $attempt->timefinish = time() - 7200;
 
         $quiz = new stdClass();
-        $quiz->timeclose = time() - 3600;
+        $quiz->timeclose = time() - HOURSECS;
 
         $this->assertEquals(mod_quiz_display_options::AFTER_CLOSE, quiz_attempt_state($quiz, $attempt));
     }

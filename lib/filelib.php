@@ -2256,7 +2256,7 @@ function send_file($path, $filename, $lifetime = 'default' , $filter=0, $pathiss
         if (!empty($CFG->filelifetime)) {
             $lifetime = $CFG->filelifetime;
         } else {
-            $lifetime = 86400;
+            $lifetime = DAYSECS;
         }
     }
 

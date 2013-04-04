@@ -1409,7 +1409,7 @@ class assign {
         global $DB;
 
         // Only ever send a max of one days worth of updates.
-        $yesterday = time() - (24 * 3600);
+        $yesterday = time() - DAYSECS;
         $timenow   = time();
 
         // Collect all submissions from the past 24 hours that require mailing.

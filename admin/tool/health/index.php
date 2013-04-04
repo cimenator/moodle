@@ -207,7 +207,7 @@ class problem_000004 extends problem_base {
     function exists() {
         global $DB;
         $lastcron = $DB->get_field_sql('SELECT max(lastcron) FROM {modules}');
-        return (time() - $lastcron > 3600 * 24);
+        return (time() - $lastcron > DAYSECS);
     }
     function severity() {
         return SEVERITY_SIGNIFICANT;

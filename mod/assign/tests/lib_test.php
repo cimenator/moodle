@@ -67,7 +67,7 @@ class mod_assign_lib_testcase extends mod_assign_base_testcase {
         $submission = $assign->get_user_submission($this->students[0]->id, true);
 
         $this->expectOutputRegex('/submitted:/');
-        assign_print_recent_activity($this->course, true, time() - 3600);
+        assign_print_recent_activity($this->course, true, time() - HOURSECS);
     }
 
     public function test_assign_get_recent_mod_activity() {
@@ -86,7 +86,7 @@ class mod_assign_lib_testcase extends mod_assign_base_testcase {
 
         assign_get_recent_mod_activity( $activities,
                                         $index,
-                                        time() - 3600,
+                                        time() - HOURSECS,
                                         $this->course->id,
                                         $assign->get_course_module()->id);
 

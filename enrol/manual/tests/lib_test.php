@@ -459,7 +459,7 @@ class enrol_manual_lib_testcase extends advanced_testcase {
         $this->assertEquals(0, $sink->count());
 
         // use invalid notification hour to verify that before the hour the notifications are not sent.
-        $manualplugin->set_config('expirynotifylast', time() - 60*60*24);
+        $manualplugin->set_config('expirynotifylast', time() - DAYSECS);
         $manualplugin->set_config('expirynotifyhour', '24');
 
         $manualplugin->send_expiry_notifications($trace);

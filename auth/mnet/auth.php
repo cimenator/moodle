@@ -945,7 +945,7 @@ class auth_plugin_mnet extends auth_plugin_base {
         $random100 = rand(0,100);
         if ($random100 < 10) {     // Approximately 10% of the time.
             // nuke olden sessions
-            $longtime = time() - (1 * 3600 * 24);
+            $longtime = time() - DAYSECS;
             $DB->delete_records_select('mnet_session', "expires < ?", array($longtime));
         }
     }

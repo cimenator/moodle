@@ -1364,7 +1364,7 @@ function forum_print_overview($courses,&$htmlarray) {
     }
 
     if (count($trackingforums) > 0) {
-        $cutoffdate = isset($CFG->forum_oldpostdays) ? (time() - ($CFG->forum_oldpostdays*24*60*60)) : 0;
+        $cutoffdate = isset($CFG->forum_oldpostdays) ? (time() - ($CFG->forum_oldpostdays*DAYSECS)) : 0;
         $sql = 'SELECT d.forum,d.course,COUNT(p.id) AS count '.
             ' FROM {forum_posts} p '.
             ' JOIN {forum_discussions} d ON p.discussion = d.id '.
@@ -6484,7 +6484,7 @@ function forum_tp_mark_post_read($userid, $post, $forumid) {
 function forum_tp_mark_forum_read($user, $forumid, $groupid=false) {
     global $CFG, $DB;
 
-    $cutoffdate = time() - ($CFG->forum_oldpostdays*24*60*60);
+    $cutoffdate = time() - ($CFG->forum_oldpostdays*DAYSECS);
 
     $groupsel = "";
     $params = array($user->id, $forumid, $cutoffdate);
@@ -6522,7 +6522,7 @@ function forum_tp_mark_forum_read($user, $forumid, $groupid=false) {
 function forum_tp_mark_discussion_read($user, $discussionid) {
     global $CFG, $DB;
 
-    $cutoffdate = time() - ($CFG->forum_oldpostdays*24*60*60);
+    $cutoffdate = time() - ($CFG->forum_oldpostdays*DAYSECS);
 
     $sql = "SELECT p.id
               FROM {forum_posts} p
@@ -6575,7 +6575,7 @@ function forum_tp_is_post_old($post, $time=null) {
 function forum_tp_count_discussion_read_records($userid, $discussionid) {
     global $CFG, $DB;
 
-    $cutoffdate = isset($CFG->forum_oldpostdays) ? (time() - ($CFG->forum_oldpostdays*24*60*60)) : 0;
+    $cutoffdate = isset($CFG->forum_oldpostdays) ? (time() - ($CFG->forum_oldpostdays*DAYSECS)) : 0;
 
     $sql = 'SELECT COUNT(DISTINCT p.id) '.
            'FROM {forum_discussions} d '.
@@ -6599,7 +6599,7 @@ function forum_tp_count_discussion_read_records($userid, $discussionid) {
 function forum_tp_count_discussion_unread_posts($userid, $discussionid) {
     global $CFG, $DB;
 
-    $cutoffdate = isset($CFG->forum_oldpostdays) ? (time() - ($CFG->forum_oldpostdays*24*60*60)) : 0;
+    $cutoffdate = isset($CFG->forum_oldpostdays) ? (time() - ($CFG->forum_oldpostdays*DAYSECS)) : 0;
 
     $sql = 'SELECT COUNT(p.id) '.
            'FROM {forum_posts} p '.
@@ -6646,7 +6646,7 @@ function forum_tp_count_forum_posts($forumid, $groupid=false) {
 function forum_tp_count_forum_read_records($userid, $forumid, $groupid=false) {
     global $CFG, $DB;
 
-    $cutoffdate = time() - ($CFG->forum_oldpostdays*24*60*60);
+    $cutoffdate = time() - ($CFG->forum_oldpostdays*DAYSECS);
 
     $groupsel = '';
     $params = array($userid, $forumid, $cutoffdate);
@@ -7008,7 +7008,7 @@ function forum_tp_clean_read_records() {
         return;
     }
 // Look for records older than the cutoffdate that are still in the forum_read table.
-    $cutoffdate = time() - ($CFG->forum_oldpostdays*24*60*60);
+    $cutoffdate = time() - ($CFG->forum_oldpostdays*DAYSECS);
 
     //first get the oldest tracking present - we need tis to speedup the next delete query
     $sql = "SELECT MIN(fp.modified) AS first

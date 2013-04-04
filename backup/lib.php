@@ -30,7 +30,7 @@
         //Change this if you want !!
         $hours = 4;
         //End change this
-        $seconds = $hours * 60 * 60;
+        $seconds = $hours * HOURSECS;
         $delete_from = time()-$seconds;
         //Now delete from tables
         $status = $DB->execute("DELETE FROM {backup_ids}

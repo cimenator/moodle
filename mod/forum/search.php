@@ -363,7 +363,7 @@ function forum_print_big_search_form($course) {
     echo '<td class="c1">';
     if (empty($dateto)) {
         $datetochecked = '';
-        $dateto = time()+3600;
+        $dateto = time()+HOURSECS;
     }else{
         $datetochecked = 'checked="checked"';
     }

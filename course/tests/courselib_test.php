@@ -93,8 +93,8 @@ class courselib_testcase extends advanced_testcase {
         $moduleinfo->requiresubmissionstatement = true;
         $moduleinfo->sendnotifications = true;
         $moduleinfo->sendlatenotifications = true;
-        $moduleinfo->duedate = time() + (7 * 24 * 3600);
-        $moduleinfo->cutoffdate = time() + (7 * 24 * 3600);
+        $moduleinfo->duedate = time() + WEEKSECS;
+        $moduleinfo->cutoffdate = time() + WEEKSECS;
         $moduleinfo->allowsubmissionsfromdate = time();
         $moduleinfo->teamsubmission = true;
         $moduleinfo->requireallteammemberssubmit = true;
@@ -210,11 +210,11 @@ class courselib_testcase extends advanced_testcase {
         $moduleinfo->completion = COMPLETION_TRACKING_AUTOMATIC;
         $moduleinfo->completionview = COMPLETION_VIEW_REQUIRED;
         $moduleinfo->completiongradeitemnumber = 1;
-        $moduleinfo->completionexpected = time() + (7 * 24 * 3600);
+        $moduleinfo->completionexpected = time() + WEEKSECS;
 
         // Conditional activity.
         $moduleinfo->availablefrom = time();
-        $moduleinfo->availableuntil = time() + (7 * 24 * 3600);
+        $moduleinfo->availableuntil = time() + WEEKSECS;
         $moduleinfo->showavailability = CONDITION_STUDENTVIEW_SHOW;
         $coursegradeitem = grade_item::fetch_course_item($moduleinfo->course); //the activity will become available only when the user reach some grade into the course itself.
         $moduleinfo->conditiongradegroup = array(array('conditiongradeitemid' => $coursegradeitem->id, 'conditiongrademin' => 10, 'conditiongrademax' => 80));
@@ -226,7 +226,7 @@ class courselib_testcase extends advanced_testcase {
         $moduleinfo->assessed = RATING_AGGREGATE_AVERAGE;
         $moduleinfo->scale = 10; // Note: it could be minus (for specific course scale). It is a signed number.
         $moduleinfo->assesstimestart = time();
-        $moduleinfo->assesstimefinish = time() + (7 * 24 * 3600);
+        $moduleinfo->assesstimefinish = time() + WEEKSECS;
 
         // RSS.
         $moduleinfo->rsstype = 2;
@@ -466,11 +466,11 @@ class courselib_testcase extends advanced_testcase {
         $moduleinfo->completion = COMPLETION_TRACKING_AUTOMATIC;
         $moduleinfo->completionview = COMPLETION_VIEW_REQUIRED;
         $moduleinfo->completiongradeitemnumber = 1;
-        $moduleinfo->completionexpected = time() + (7 * 24 * 3600);
+        $moduleinfo->completionexpected = time() + WEEKSECS;
 
         // Conditional activity.
         $moduleinfo->availablefrom = time();
-        $moduleinfo->availableuntil = time() + (7 * 24 * 3600);
+        $moduleinfo->availableuntil = time() + WEEKSECS;
         $moduleinfo->showavailability = CONDITION_STUDENTVIEW_SHOW;
         $coursegradeitem = grade_item::fetch_course_item($moduleinfo->course); //the activity will become available only when the user reach some grade into the course itself.
         $moduleinfo->conditiongradegroup = array(array('conditiongradeitemid' => $coursegradeitem->id, 'conditiongrademin' => 10, 'conditiongrademax' => 80));
@@ -482,7 +482,7 @@ class courselib_testcase extends advanced_testcase {
         $moduleinfo->assessed = RATING_AGGREGATE_AVERAGE;
         $moduleinfo->scale = 10; // Note: it could be minus (for specific course scale). It is a signed number.
         $moduleinfo->assesstimestart = time();
-        $moduleinfo->assesstimefinish = time() + (7 * 24 * 3600);
+        $moduleinfo->assesstimefinish = time() + WEEKSECS;
 
         // RSS.
         $moduleinfo->rsstype = 2;

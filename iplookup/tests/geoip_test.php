@@ -46,7 +46,7 @@ class geoip_testcase extends advanced_testcase {
         // let's store the file somewhere
         $gzfile = "$CFG->dataroot/phpunit/geoip/GeoLiteCity.dat.gz";
         check_dir_exists(dirname($gzfile));
-        if (file_exists($gzfile) and (filemtime($gzfile) < time() - 60*60*24*30)) {
+        if (file_exists($gzfile) and (filemtime($gzfile) < time() - 30*DAYSECS)) {
             // delete file if older than 1 month
             unlink($gzfile);
         }

@@ -2717,7 +2717,7 @@ function can_delete_course($courseid) {
         return false;
     }
 
-    $since = time() - 60*60*24;
+    $since = time() - DAYSECS;
 
     $params = array('userid'=>$USER->id, 'url'=>"view.php?id=$courseid", 'since'=>$since);
     $select = "module = 'course' AND action = 'new' AND userid = :userid AND url = :url AND time > :since";

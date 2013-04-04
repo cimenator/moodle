@@ -333,7 +333,7 @@ function restart_preview($previewid, $questionid, $displayoptions, $context) {
  * previews that are left over in the database.
  */
 function question_preview_cron() {
-    $maxage = 24*60*60; // We delete previews that have not been touched for 24 hours.
+    $maxage = HOURSECS; // We delete previews that have not been touched for 24 hours.
     $lastmodifiedcutoff = time() - $maxage;
 
     mtrace("\n  Cleaning up old question previews...", '');

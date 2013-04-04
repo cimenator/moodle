@@ -80,7 +80,7 @@ if (!$file or is_dir($file)) {
 }
 
 $etag = sha1("$component/$path");
-$lifetime = 60*60*24*120; // 120 days should be enough.
+$lifetime = DAYSECS*120; // 120 days should be enough.
 $pathinfo = pathinfo($path);
 
 if (empty($pathinfo['extension'])) {

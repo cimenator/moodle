@@ -1018,7 +1018,7 @@ function wiki_delete_locks($pageid, $userid = null, $section = null, $delete_fro
 function wiki_delete_old_locks() {
     global $DB;
 
-    $DB->delete_records_select('wiki_locks', "lockedat < ?", array(time() - 3600));
+    $DB->delete_records_select('wiki_locks', "lockedat < ?", array(time() - HOURSECS));
 }
 
 /**

@@ -121,12 +121,12 @@ class mod_assign_locallib_testcase extends mod_assign_base_testcase {
 
         $this->assertEquals(true, $assign->testable_show_intro());
 
-        $tomorrow = time() + (24*60*60);
+        $tomorrow = time() + DAYSECS;
 
         $assign = $this->create_instance(array('alwaysshowdescription'=>0,
                                                'allowsubmissionsfromdate'=>$tomorrow));
         $this->assertEquals(false, $assign->testable_show_intro());
-        $yesterday = time() - (24*60*60);
+        $yesterday = time() - DAYSECS;
         $assign = $this->create_instance(array('alwaysshowdescription'=>0,
                                                'allowsubmissionsfromdate'=>$yesterday));
         $this->assertEquals(true, $assign->testable_show_intro());

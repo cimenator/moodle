@@ -10411,7 +10411,7 @@ function message_popup_window() {
 
     //if the user was last notified over an hour ago we can renotify them of old messages
     //so don't worry about when the new message was sent
-    $lastnotifiedlongago = $USER->message_lastpopup < (time()-3600);
+    $lastnotifiedlongago = $USER->message_lastpopup < (time()-HOURSECS);
     if (!$lastnotifiedlongago) {
         $messagesql .= 'AND m.timecreated > :lastpopuptime';
     }

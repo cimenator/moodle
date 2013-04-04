@@ -231,11 +231,11 @@ function report_stats_report($course, $report, $mode, $user, $roleid, $time) {
                     if (isset($stat->line2)) {
                         $a[] = $stat->line2;
                     }
-                    if (empty($CFG->loglifetime) || ($stat->timeend-(60*60*24)) >= (time()-60*60*24*$CFG->loglifetime)) {
+                    if (empty($CFG->loglifetime) || ($stat->timeend-DAYSECS) >= (time()-DAYSECS*$CFG->loglifetime)) {
                         if (has_capability('report/log:view', context_course::instance($course->id))) {
                             $a[] = '<a href="'.$CFG->wwwroot.'/report/log/index.php?id='.
                                 $course->id.'&amp;chooselog=1&amp;showusers=1&amp;showcourses=1&amp;user='
-                                .$userid.'&amp;date='.usergetmidnight($stat->timeend-(60*60*24)).'">'
+                                .$userid.'&amp;date='.usergetmidnight($stat->timeend-DAYSECS).'">'
                                 .get_string('course').' ' .get_string('logs').'</a>&nbsp;';
                         } else {
                             $a[] = '';

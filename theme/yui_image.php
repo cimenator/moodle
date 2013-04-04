@@ -98,7 +98,7 @@ switch($pathinfo['extension']) {
 // If-Modified-Since header, we can send back a 304 Not Modified since the
 // content never changes (the rev number is increased any time the content changes)
 if (strpos($path, '/-1/') === false and (!empty($_SERVER['HTTP_IF_NONE_MATCH']) || !empty($_SERVER['HTTP_IF_MODIFIED_SINCE']))) {
-    $lifetime = 60*60*24*360; // 1 year, we do not change YUI versions often, there are a few custom yui modules
+    $lifetime = DAYSECS*360; // 1 year, we do not change YUI versions often, there are a few custom yui modules
     header('HTTP/1.1 304 Not Modified');
     header('Last-Modified: '. gmdate('D, d M Y H:i:s', filemtime($imagepath)) .' GMT');
     header('Expires: '. gmdate('D, d M Y H:i:s', time() + $lifetime) .' GMT');
@@ -115,7 +115,7 @@ function yui_image_cached($imagepath, $imagename, $mimetype, $etag) {
     global $CFG;
     require("$CFG->dirroot/lib/xsendfilelib.php");
 
-    $lifetime = 60*60*24*360; // 1 year, we do not change YUI versions often, there are a few custom yui modules
+    $lifetime = DAYSECS*360; // 1 year, we do not change YUI versions often, there are a few custom yui modules
 
     header('Content-Disposition: inline; filename="'.$imagename.'"');
     header('Last-Modified: '. gmdate('D, d M Y H:i:s', filemtime($imagepath)) .' GMT');

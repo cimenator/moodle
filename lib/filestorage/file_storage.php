@@ -2005,7 +2005,7 @@ class file_storage {
         // those are identified by time stamp of the /. root dir
         mtrace('Deleting old draft files... ', '');
         cron_trace_time_and_memory();
-        $old = time() - 60*60*24*4;
+        $old = time() - DAYSECS*4;
         $sql = "SELECT *
                   FROM {files}
                  WHERE component = 'user' AND filearea = 'draft' AND filepath = '/' AND filename = '.'
@@ -2039,7 +2039,7 @@ class file_storage {
 
         // remove trash pool files once a day
         // if you want to disable purging of trash put $CFG->fileslastcleanup=time(); into config.php
-        if (empty($CFG->fileslastcleanup) or $CFG->fileslastcleanup < time() - 60*60*24) {
+        if (empty($CFG->fileslastcleanup) or $CFG->fileslastcleanup < time() - DAYSECS) {
             require_once($CFG->libdir.'/filelib.php');
             // Delete files that are associated with a context that no longer exists.
             mtrace('Cleaning up files from deleted contexts... ', '');

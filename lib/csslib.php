@@ -109,7 +109,7 @@ function css_store_css(theme_config $theme, $csspath, array $cssfiles) {
 function css_send_ie_css($themename, $rev, $etag, $slasharguments) {
     global $CFG;
 
-    $lifetime = 60*60*24*60; // 60 days only - the revision may get incremented quite often
+    $lifetime = 60*DAYSECS; // 60 days only - the revision may get incremented quite often
 
     $relroot = preg_replace('|^http.?://[^/]+|', '', $CFG->wwwroot);
 
@@ -148,7 +148,7 @@ function css_send_ie_css($themename, $rev, $etag, $slasharguments) {
  * @param string $etag The revision to make sure we utilise any caches.
  */
 function css_send_cached_css($csspath, $etag) {
-    $lifetime = 60*60*24*60; // 60 days only - the revision may get incremented quite often
+    $lifetime = 60*DAYSECS; // 60 days only - the revision may get incremented quite often
 
     header('Etag: '.$etag);
     header('Content-Disposition: inline; filename="styles.php"');
@@ -203,7 +203,7 @@ function css_send_uncached_css($css, $themesupportsoptimisation = true) {
  * @param string $etag
  */
 function css_send_unmodified($lastmodified, $etag) {
-    $lifetime = 60*60*24*60; // 60 days only - the revision may get incremented quite often
+    $lifetime = 60*DAYSECS; // 60 days only - the revision may get incremented quite often
     header('HTTP/1.1 304 Not Modified');
     header('Expires: '. gmdate('D, d M Y H:i:s', time() + $lifetime) .' GMT');
     header('Cache-Control: public, max-age='.$lifetime);

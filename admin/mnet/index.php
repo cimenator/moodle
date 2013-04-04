@@ -63,7 +63,7 @@
             @list($key, $time) = explode(':',$SESSION->mnet_confirm_delete_key);
             $mnet->get_private_key();
 
-            if($time < time() - 60) {
+            if($time < time() - MINSECS) {
                 // fail - you're out of time.
                 print_error ('deleteoutoftime', 'mnet', 'index.php');
                 exit;

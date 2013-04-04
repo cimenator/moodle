@@ -108,7 +108,7 @@ if ($rev > -1) {
         if (!empty($_SERVER['HTTP_IF_NONE_MATCH']) || !empty($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
             // we do not actually need to verify the etag value because our files
             // never change in cache because we increment the rev parameter
-            $lifetime = 60*60*24*60; // 60 days only - the revision may get incremented quite often
+            $lifetime = 60*DAYSECS; // 60 days only - the revision may get incremented quite often
             $mimetype = get_contenttype_from_ext($ext);
             header('HTTP/1.1 304 Not Modified');
             header('Expires: '. gmdate('D, d M Y H:i:s', time() + $lifetime) .' GMT');
@@ -200,7 +200,7 @@ function send_cached_image($imagepath, $etag) {
     global $CFG;
     require("$CFG->dirroot/lib/xsendfilelib.php");
 
-    $lifetime = 60*60*24*60; // 60 days only - the revision may get incremented quite often
+    $lifetime = 60*DAYSECS; // 60 days only - the revision may get incremented quite often
     $pathinfo = pathinfo($imagepath);
     $imagename = $pathinfo['filename'].'.'.$pathinfo['extension'];
 

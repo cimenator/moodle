@@ -66,7 +66,7 @@ class completion_criteria_date extends completion_criteria {
             $mform->setDefault('criteria_date', 1);
             $mform->setDefault('criteria_date_value', $this->timeend);
         } else {
-            $mform->setDefault('criteria_date_value', time() + 3600 * 24);
+            $mform->setDefault('criteria_date_value', time() + DAYSECS);
         }
     }
 

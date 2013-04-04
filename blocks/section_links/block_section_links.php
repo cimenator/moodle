@@ -86,7 +86,7 @@ class block_section_links extends block_base {
 
         // Prepare the highlight value.
         if ($course->format == 'weeks') {
-            $highlight = ceil((time() - $course->startdate) / 604800);
+            $highlight = ceil((time() - $course->startdate) / WEEKSECS);
         } else if ($course->format == 'topics') {
             $highlight = $course->marker;
         } else {

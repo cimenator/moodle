@@ -643,7 +643,7 @@ class portfolio_exporter {
         if (empty($this->id)) {
             $r = (object)array(
                 'data' => base64_encode(serialize($this)),
-                'expirytime' => time() + (60*60*24),
+                'expirytime' => time() + DAYSECS,
                 'userid' => $this->user->id,
                 'instance' => (empty($this->instance)) ? null : $this->instance->get('id'),
             );

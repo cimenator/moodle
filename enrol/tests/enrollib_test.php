@@ -77,11 +77,11 @@ class core_enrol_testcase extends advanced_testcase {
 
         $manual->enrol_user($maninstance2, $user1->id);
         $manual->enrol_user($maninstance2, $user2->id);
-        $manual->enrol_user($maninstance2, $user3->id, 0, 1, time()+(60*60));
+        $manual->enrol_user($maninstance2, $user3->id, 0, 1, time()+HOURSECS);
 
         $manual->enrol_user($maninstance3, $user1->id);
         $manual->enrol_user($maninstance3, $user2->id);
-        $manual->enrol_user($maninstance3, $user3->id, 0, 1, time()-(60*60));
+        $manual->enrol_user($maninstance3, $user3->id, 0, 1, time()-HOURSECS);
         $manual->enrol_user($maninstance3, $user4->id, 0, 0, 0, ENROL_USER_SUSPENDED);
 
 
@@ -193,8 +193,8 @@ class core_enrol_testcase extends advanced_testcase {
 
         $manual->enrol_user($maninstance2, $user2->id, $studentrole->id);
 
-        $manual->enrol_user($maninstance1, $user3->id, $studentrole->id, 1, time()+(60*60));
-        $manual->enrol_user($maninstance2, $user3->id, 0, 1, time()-(60*60));
+        $manual->enrol_user($maninstance1, $user3->id, $studentrole->id, 1, time()+HOURSECS);
+        $manual->enrol_user($maninstance2, $user3->id, 0, 1, time()-HOURSECS);
         $manual->enrol_user($maninstance3, $user2->id, $studentrole->id);
         $manual->enrol_user($maninstance4, $user2->id, 0, 0, 0, ENROL_USER_SUSPENDED);
 

@@ -440,7 +440,7 @@ if (any_new_admin_settings($adminroot)){
 $errorsdisplayed = defined('WARN_DISPLAY_ERRORS_ENABLED');
 
 $lastcron = $DB->get_field_sql('SELECT MAX(lastcron) FROM {modules}');
-$cronoverdue = ($lastcron < time() - 3600 * 24);
+$cronoverdue = ($lastcron < time() - DAYSECS);
 $dbproblems = $DB->diagnose();
 $maintenancemode = !empty($CFG->maintenance_enabled);
 

@@ -138,15 +138,15 @@ function stats_cron_daily($maxdays=1) {
     }
 
     // calculate scheduled time
-    $scheduledtime = stats_get_base_daily() + $CFG->statsruntimestarthour*60*60 + $CFG->statsruntimestartminute*60;
+    $scheduledtime = stats_get_base_daily() + $CFG->statsruntimestarthour*HOURSECS + $CFG->statsruntimestartminute*60;
 
     // Note: This will work fine for sites running cron each 4 hours or less (hopefully, 99.99% of sites). MDL-16709
     // check to make sure we're due to run, at least 20 hours after last run
-    if (isset($CFG->statslastexecution) && ((time() - 20*60*60) < $CFG->statslastexecution)) {
+    if (isset($CFG->statslastexecution) && ((time() - 20*HOURSECS) < $CFG->statslastexecution)) {
         mtrace("...preventing stats to run, last execution was less than 20 hours ago.");
         return false;
     // also check that we are a max of 4 hours after scheduled time, stats won't run after that
-    } else if (time() > $scheduledtime + 4*60*60) {
+    } else if (time() > $scheduledtime + 4*HOURSECS) {
         mtrace("...preventing stats to run, more than 4 hours since scheduled time.");
         return false;
     } else {
@@ -161,7 +161,7 @@ function stats_cron_daily($maxdays=1) {
     }
 
 
-    $timeout = empty($CFG->statsmaxruntime) ? 60*60*24 : $CFG->statsmaxruntime;
+    $timeout = empty($CFG->statsmaxruntime) ? DAYSECS : $CFG->statsmaxruntime;
 
     if (!set_cron_lock('statsrunning', $now + $timeout)) {
         return false;
@@ -1561,7 +1561,7 @@ function stats_check_uptodate($courseid=0) {
 
     $latestday = stats_get_start_from('daily');
 
-    if ((time() - 60*60*24*2) < $latestday) { // we're ok
+    if ((time() - DAYSECS*2) < $latestday) { // we're ok
         return NULL;
     }
 
