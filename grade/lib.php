@@ -1422,7 +1422,7 @@ class grade_structure {
 
         $strparams->itemmodule = null;
         if (isset($element['object']->itemmodule)) {
-            $strparams->itemmodule = $element['object']->itemmodule;
+            $strparams->itemmodule = get_string('modulename', $element['object']->itemmodule);
         }
         return $strparams;
     }
